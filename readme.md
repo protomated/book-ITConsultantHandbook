@@ -1,13 +1,13 @@
 ### The IT Consultant's Automation Handbook: Revolutionize Your Practice with No-Code Solutions
 
-[<button> Buy the paperback ❯ </button>](go.protomated.com/it-handbook/utm_source=github&utm_medium=social&utm_campaign=it-handbook) [<button> Download the latest version ❯ </button>](https://github.com/deletosh/book-ITConsultantHandbook/releases)
+[Buy the paperback ❯](https://go.protomated.com/it-handbook?utm_source=github&utm_medium=social&utm_campaign=it-handbook) || [Download the latest version ❯](https://raw.githubusercontent.com/protomated/book-ITConsultantHandbook/blob/main/breadcrumbs/main.pdf)
 
 > 💡 This is an Early Release. You're getting the raw and unedited content as I write. I'm doing this, so you can take
 > advantage of the content before the official release, AND you can share critical feedback (plus, I include you in the
 > credits of the official release ☺️)
 >
 > If you found a problem, please email me @ [dele@protomated.com](mailto:dele@protomated.com)
-> or post a comment in the [Business Automators community](https://discord.gg/X2USgYTB) and to get notified when I add new section(s), 
+> or post a comment in the [Business Automators community](https://discord.gg/X2USgYTB) and to get notified when I add new section(s),
 
 ***
 
