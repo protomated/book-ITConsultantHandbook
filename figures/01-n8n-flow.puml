@@ -1,0 +1,23 @@
+@startuml
+skinparam activityDiamondBackgroundColor #FBFB77
+skinparam activityBackgroundColor #CCFFCC
+skinparam arrowColor #333333
+
+start
+:Receive email in Gmail;
+:Send to OpenAI for classification;
+:AI classifies by priority;
+:AI tags email;
+split
+  :Urgent client issue;
+split again
+  :Project update;
+split again
+  :New business inquiry;
+split again
+  :Invoicing and payment;
+split again
+  :Administrative task;
+end split
+stop
+@enduml
