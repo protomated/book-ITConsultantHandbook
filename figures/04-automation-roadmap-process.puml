@@ -1,0 +1,26 @@
+@startuml
+start
+:Receive client inquiry;
+if (Is inquiry complete?) then (yes)
+  :Schedule initial meeting;
+else (no)
+  :Request additional information;
+  goto start
+endif
+:Conduct initial meeting;
+:Prepare proposal;
+if (Client accepts proposal?) then (yes)
+  :Send welcome package;
+  :Set up client in systems;
+  :Schedule kick-off meeting;
+else (no)
+  :Follow up with client;
+  if (Client interested?) then (yes)
+    goto start
+  else (no)
+    stop
+  endif
+endif
+:Begin project work;
+stop
+@enduml
