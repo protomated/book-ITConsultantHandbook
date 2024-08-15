@@ -1,0 +1,35 @@
+@startuml
+!define RECTANGLE class
+
+skinparam roundcorner 15
+skinparam class {
+    BackgroundColor PaleGreen
+    BorderColor DarkGreen
+    ArrowColor DarkGreen
+}
+
+RECTANGLE "Initial Business Process" as IBP
+RECTANGLE "No-Code Automation Solution" as NCAS
+RECTANGLE "Automated Process" as AP
+RECTANGLE "Changed Business Needs" as CBN
+RECTANGLE "Quick Modification" as QM
+RECTANGLE "Updated Automated Process" as UAP
+
+IBP -down-> NCAS : Implement
+NCAS -down-> AP : Results in
+CBN -right-> QM : Triggers
+AP -right-> QM : Easily modified
+QM -down-> UAP : Leads to
+
+note right of NCAS
+  No-code platforms allow for
+  visual process design and
+  easy modifications
+end note
+
+note bottom of QM
+  Changes can often be made
+  in hours or days, not weeks
+  or months
+end note
+@enduml
