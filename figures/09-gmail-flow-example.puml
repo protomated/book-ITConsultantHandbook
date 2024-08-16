@@ -1,0 +1,14 @@
+@startuml
+!define RECTANGLE class
+
+RECTANGLE "Gmail Trigger" as GT
+RECTANGLE "Filter" as F
+RECTANGLE "Template" as T
+RECTANGLE "Send Email" as SE
+
+GT --> F : New Email
+F --> T : Matches Filter
+T --> SE : Apply Template
+SE --> GT : Send Response
+
+@enduml
