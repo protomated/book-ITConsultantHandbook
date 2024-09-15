@@ -1,2 +1,6 @@
 .idea
 .helpers
+auxil
+out/*
+!out/main.pdf
+**/*.DS_Store
