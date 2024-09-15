@@ -1,8 +1,10 @@
 \chapter{Transforming Your Core Services}
 
+
 \section{Introduction}
 
 As an IT consultant, your ability to efficiently gather requirements, prototype solutions, and present data can set you apart from the competition. In this chapter, we'll explore how to leverage no-code tools to revolutionize these core services, making your consulting practice more efficient and effective.
+
 
 \section{Automating Requirements Gathering}
 
@@ -10,7 +12,52 @@ One of the most time-consuming aspects of IT consulting is gathering and documen
 
 \subsection{The Traditional vs. Automated Approach}
 
-% TODO @illustrate: A side-by-side comparison of traditional vs. automated requirements gathering process
+\begin{tikzpicture}
+    [
+    box/.style={draw, rounded corners, minimum width=2.5cm, minimum height=1cm, align=center},
+    arrow/.style={->, >=stealth, thick},
+    title/.style={font=\bfseries\large},
+    subtitle/.style={font=\bfseries}
+    ]
+
+% Traditional Process
+    \node[title] at (-3, 4) {Traditional Process};
+    \node[box] (t1) at (-3, 3) {Manual Interviews};
+    \node[box] (t2) at (-3, 1.5) {Note Taking};
+    \node[box] (t3) at (-3, 0) {Document Creation};
+    \node[box] (t4) at (-3, -1.5) {Review \& Revisions};
+    \node[box] (t5) at (-3, -3) {Final Requirements};
+
+    \draw[arrow] (t1) -- (t2);
+    \draw[arrow] (t2) -- (t3);
+    \draw[arrow] (t3) -- (t4);
+    \draw[arrow] (t4) -- (t5);
+
+% Automated Process
+    \node[title] at (3, 4) {Automated Process};
+    \node[box, fill=green!20] (a1) at (3, 3) {Online Questionnaire};
+    \node[box, fill=green!20] (a2) at (3, 1.5) {Automated Data Collection};
+    \node[box, fill=green!20] (a3) at (3, 0) {AI-Assisted Analysis};
+    \node[box, fill=green!20] (a4) at (3, -1.5) {Real-time Dashboard};
+    \node[box, fill=green!20] (a5) at (3, -3) {Dynamic Requirements};
+
+    \draw[arrow] (a1) -- (a2);
+    \draw[arrow] (a2) -- (a3);
+    \draw[arrow] (a3) -- (a4);
+    \draw[arrow] (a4) -- (a5);
+
+% Comparison arrows
+    \draw[arrow, dashed, red] (t1) -- node[above, sloped, text=red] {\small Faster} (a1);
+    \draw[arrow, dashed, red] (t3) -- node[above, sloped, text=red] {\small More Accurate} (a3);
+    \draw[arrow, dashed, red] (t5) -- node[above, sloped, text=red] {\small More Flexible} (a5);
+
+% Time comparison
+    \node[subtitle] at (-4.5, -4) {Time:};
+    \draw[ultra thick] (-4.5, -4.5) -- (-1.5, -4.5);
+    \node[subtitle] at (1.5, -4) {Time:};
+    \draw[ultra thick, green] (1.5, -4.5) -- (2.5, -4.5);
+
+\end{tikzpicture}
 
 \subsection{Setting Up an Automated Requirements Workflow}
 
@@ -55,6 +102,8 @@ The Triplet Questioning technique is a powerful method for eliciting detailed re
     \caption{Flowchart of the automated Triplet Questioning process}
     \label{fig:triplet-questioning}
 \end{figure}
+
+
 \section{Rapid Prototyping Techniques That Wow Clients}
 
 Once you've gathered requirements, the next step is creating a prototype to validate ideas and get client feedback. No-code tools excel at rapid prototyping, allowing you to create impressive demos quickly.
@@ -95,7 +144,50 @@ Once you've gathered requirements, the next step is creating a prototype to vali
 
 3. Set up a live environment where clients can interact with the prototype themselves.
 
-% TODO @illustrate: Infographic of prototype presentation best practices
+\begin{tikzpicture}
+    [
+    note/.style={draw, fill=yellow!20, rounded corners, text width=3cm, align=center, font=\small},
+    icon/.style={font=\Large},
+    arrow/.style={->, >=stealth, thick},
+    title/.style={font=\bfseries\large},
+    subtitle/.style={font=\bfseries}
+    ]
+
+% Title
+    \node[title] at (0, 4) {Prototype Presentation Best Practices};
+
+% Central icon
+    \node[icon] (center) at (0, 0) {\faLightbulb};
+
+% Best practices
+    \node[note] (demo) at (-4, 2) {Create short demo videos};
+    \node[icon] at (-5, 2) {\faVideo};
+
+    \node[note] (deck) at (0, 3) {Prepare a concise slide deck};
+    \node[icon] at (-1, 3) {\faFile};
+
+    \node[note] (live) at (4, 2) {Set up a live interactive environment};
+    \node[icon] at (5, 2) {\faLaptop};
+
+    \node[note] (focus) at (-4, -2) {Focus on solving client problems};
+    \node[icon] at (-5, -2) {\faSearchDollar};
+
+    \node[note] (feedback) at (0, -3) {Gather real-time feedback};
+    \node[icon] at (-1, -3) {\faComments};
+
+    \node[note] (story) at (4, -2) {Tell a compelling story};
+    \node[icon] at (5, -2) {\faBook};
+
+% Connecting arrows
+    \foreach \i in {demo, deck, live, focus, feedback, story}
+    \draw[arrow] (center) -- (\i);
+
+% Additional tips
+    \node[note, text width=5cm] at (-6, 0) {Keep it simple:\\Focus on core features\\and main user flows};
+    \node[note, text width=5cm] at (6, 0) {Be prepared:\\Anticipate questions\\and have backup plans};
+
+\end{tikzpicture}
+
 
 \section{Dynamic Data Visualization and Reporting}
 
@@ -129,6 +221,7 @@ Presenting data effectively is crucial for demonstrating the value of your solut
     \caption{Flowchart of the automated report generation process}
     \label{fig:automated-report-generation}
 \end{figure}
+
 \subsection{Creating a Self-Service Reporting Tool}
 
 Combine BudiBase and n8n to create a tool that allows clients to generate their own reports:
@@ -141,6 +234,7 @@ Combine BudiBase and n8n to create a tool that allows clients to generate their 
 
 % TODO @screenshot: BudiBase interface for custom report generation
 
+
 \section{Case Study: Transforming a Traditional IT Consultancy}
 
 Let's look at how implementing these automated processes transformed a traditional IT consultancy:
@@ -152,7 +246,39 @@ Let's look at how implementing these automated processes transformed a tradition
     \item Consultants able to handle 3x more projects simultaneously
 \end{itemize}
 
-% TODO @illustrate: Before and after infographic showing the transformation metrics
+% @illustrate: Before and after infographic showing the transformation metrics
+\begin{tikzpicture}
+    [
+    box/.style={draw, rectangle, minimum width=4cm, minimum height=1cm, align=center},
+    arrow/.style={->, >=stealth, thick},
+    label/.style={font=\small\bfseries}
+    ]
+
+% Before column
+    \node[label] at (-3, 3) {Before};
+    \node[box] (b1) at (-3, 2) {Requirements\\Gathering};
+    \node[box] (b2) at (-3, 0) {Prototype\\Delivery};
+    \node[box] (b3) at (-3, -2) {Client\\Satisfaction};
+    \node[box] (b4) at (-3, -4) {Projects per\\Consultant};
+
+% After column
+    \node[label] at (3, 3) {After};
+    \node[box, fill=green!20] (a1) at (3, 2) {Requirements\\Gathering\\-60\%};
+    \node[box, fill=green!20] (a2) at (3, 0) {Prototype\\Delivery\\Days vs Weeks};
+    \node[box, fill=green!20] (a3) at (3, -2) {Client\\Satisfaction\\+35\%};
+    \node[box, fill=green!20] (a4) at (3, -4) {Projects per\\Consultant\\3x};
+
+% Arrows
+    \draw[arrow] (b1) -- (a1);
+    \draw[arrow] (b2) -- (a2);
+    \draw[arrow] (b3) -- (a3);
+    \draw[arrow] (b4) -- (a4);
+
+% Title
+    \node[font=\Large\bfseries] at (0, 4) {IT Consultancy Transformation};
+
+\end{tikzpicture}
+
 
 \section{Overcoming Common Challenges}
 
@@ -162,6 +288,7 @@ Let's look at how implementing these automated processes transformed a tradition
     \item Ensuring data accuracy across multiple tools
     \item Maintaining a personal touch in automated processes
 \end{itemize}
+
 
 \section{Conclusion}
 

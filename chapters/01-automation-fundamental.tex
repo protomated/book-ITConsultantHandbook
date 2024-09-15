@@ -17,7 +17,7 @@ We will solve that in this chapter.
 
 \begin{figure}[h]
     \centering
-%    TODO @illustrate: Cluttered inbox vs. Organized, classified inbox
+    \includegraphics[width=0.5\textwidth]{./figures/}
     \caption{Cluttered inbox vs. Organized, classified inbox}
 \end{figure}
 
@@ -159,10 +159,52 @@ Now, let's add the OpenAI node to our workflow:
 
 \begin{figure}[h]
     \centering
-%    TODO @illustrate: Final workflow diagram
-    \caption{Final workflow diagram}
-\end{figure}
+    \begin{tikzpicture}[node distance=1cm, auto, scale=0.6, transform shape]
+        % Define styles
+        \tikzstyle{block} = [rectangle, draw, fill=green!20,
+        text width=4em, text centered, rounded corners, minimum height=2.5em]
+        \tikzstyle{decision} = [diamond, draw, fill=yellow!20,
+        text width=4em, text centered, inner sep=0pt]
+        \tikzstyle{startstop} = [rectangle, rounded corners, draw, fill=red!20,
+        text width=3em, text centered, minimum height=2em]
+        \tikzstyle{line} = [draw, -latex']
 
+        % Place nodes
+        \node [startstop] (start) {Start};
+        \node [block, below of=start, node distance=1.5cm] (receive) {Receive email in Gmail};
+        \node [block, below of=receive, node distance=1.5cm] (sendai) {Send to OpenAI for classification};
+        \node [block, below of=sendai, node distance=1.5cm] (classify) {AI classifies by priority};
+        \node [block, below of=classify, node distance=1.5cm] (tag) {AI tags email};
+        \node [decision, below of=tag, node distance=2cm] (decide) {};
+
+        \node [block, below left of=decide, node distance=2.5cm] (new) {New business inquiry};
+        \node [block, below of=decide, node distance=2cm] (admin) {Administrative task};
+        \node [block, below right of=decide, node distance=2.5cm] (invoice) {Invoicing and payment};
+
+        \node [block, below of=new, node distance=1.5cm] (project) {Project update};
+        \node [block, below of=invoice, node distance=1.5cm] (urgent) {Urgent client issue};
+
+        \node [startstop, below of=admin, node distance=3cm] (stop) {Stop};
+
+        % Draw edges
+        \path [line] (start) -- (receive);
+        \path [line] (receive) -- (sendai);
+        \path [line] (sendai) -- (classify);
+        \path [line] (classify) -- (tag);
+        \path [line] (tag) -- (decide);
+        \path [line] (decide) -- (new);
+        \path [line] (decide) -- (admin);
+        \path [line] (decide) -- (invoice);
+        \path [line] (new) -- (project);
+        \path [line] (invoice) -- (urgent);
+        \path [line] (project) -- (stop);
+        \path [line] (admin) -- (stop);
+        \path [line] (urgent) -- (stop);
+
+    \end{tikzpicture}
+    \caption{Email Classification Workflow}
+    \label{fig:email-classification-workflow}
+\end{figure}
 
 \section{Putting It All Together}
 

@@ -1,8 +1,10 @@
 \chapter{No-Code Tools Every IT Consultant Should Master}
 
+
 \section{Introduction}
 
 In today's fast-paced tech landscape, the ability to rapidly prototype and deploy solutions is invaluable. No-code platforms are revolutionizing how IT consultants work, allowing you to create powerful applications and automations without writing a single line of code. Let's dive into the top tools you need in your arsenal and explore real-world applications that can transform your consulting practice.
+
 
 \section{Top 3 No-Code Platforms for IT Consulting}
 
@@ -119,6 +121,7 @@ The consultant connected BudiBase to the client's existing databases and APIs, c
 
 The consultant was able to deliver this solution in just three weeks, a fraction of the time it would have taken to develop a custom application from scratch. The client was so impressed with the result that they referred the consultant to two other businesses, leading to significant growth in the consultant's practice.
 
+
 \section{Build Your First No-Code App in 30 Minutes}
 
 Let's put theory into practice by building a client onboarding automation using n8n and NoCoDB. This practical example will demonstrate how quickly you can create valuable solutions for your consulting business.
@@ -184,9 +187,42 @@ Once you've connected all the nodes, it's time to test your workflow:
 2. Check each step of the workflow to ensure data is flowing correctly.
 3. Verify that the NoCoDB database is updated, the Google Drive folder is created, the welcome email is sent, and the calendar event is scheduled.
 
-% TODO @illustrate: Complete workflow diagram showing all connected nodes in n8n
+% @illustrate: Complete workflow diagram showing all connected nodes in n8n
+\begin{tikzpicture}
+    [
+    node distance = 0.8cm and 1.5cm,
+    box/.style = {draw, rectangle, minimum width=2.2cm, minimum height=0.7cm, text centered, rounded corners, font=\footnotesize},
+    arrow/.style = {->, thick},
+    scale=0.85
+    ]
+
+% Nodes
+    \node[box] (webhook) {Webhook};
+    \node[box, right=of webhook] (nocodb1) {NoCoDB Create};
+    \node[box, below right=0.4cm and 0.5cm of nocodb1] (gdrive) {Google Drive};
+    \node[box, right=of gdrive] (gmail) {Gmail};
+    \node[box, above right=0.4cm and 0.5cm of gmail] (gcal) {Google Calendar};
+    \node[box, right=of nocodb1] (nocodb2) {NoCoDB Update};
+
+% Arrows
+    \draw[arrow] (webhook) -- (nocodb1);
+    \draw[arrow] (nocodb1) -- (gdrive);
+    \draw[arrow] (gdrive) -- (gmail);
+    \draw[arrow] (gmail) -- (gcal);
+    \draw[arrow] (gcal) -- (nocodb2);
+
+% Labels
+    \node[above=0.05cm of webhook, font=\tiny] {1. New Form Submission};
+    \node[above=0.05cm of nocodb1, font=\tiny] {2. Create Record};
+    \node[below=0.05cm of gdrive, font=\tiny] {3. Create Folder};
+    \node[below=0.05cm of gmail, font=\tiny] {4. Send Welcome Email};
+    \node[above=0.05cm of gcal, font=\tiny] {5. Create Calendar Event};
+    \node[above=0.05cm of nocodb2, font=\tiny] {6. Update Record};
+
+\end{tikzpicture}
 
 Congratulations! You've just created a powerful client onboarding automation in under 30 minutes. This workflow will save you hours of manual work for each new client, allowing you to focus on delivering value rather than managing administrative tasks.
+
 
 \section{Security and Compliance Considerations}
 
@@ -205,6 +241,7 @@ When working with no-code tools, especially in IT consulting where you're handli
 6. \textbf{Third-Party Integrations}: Carefully vet any third-party services you integrate with your no-code tools.
 
 Remember, while no-code platforms can significantly speed up development, they don't absolve you of responsibility for the security and compliance of your solutions. Always approach these tools with a security-first mindset.
+
 
 \section{Conclusion}
 
