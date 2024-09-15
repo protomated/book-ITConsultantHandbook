@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam activityFontSize 14
+skinparam activityDiamondFontSize 12
+
+start
+:Initialize n8n workflow;
+repeat
+  :Ask "What is your requirement?";
+  :Store response in NoCoDB;
+  :Ask "What does that give you of value?";
+  :Store response in NoCoDB;
+  :Ask "Which value is most important?";
+  :Store response in NoCoDB;
+repeat while (More requirements?) is (yes)
+->no;
+:Analyze responses in NoCoDB;
+:Generate report in BudiBase;
+:Stakeholders review and prioritize;
+stop
+@enduml
