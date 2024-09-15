@@ -1,0 +1,43 @@
+@startmindmap
+<style>
+mindmapDiagram {
+  node {
+    BackgroundColor lightGreen
+  }
+  :depth(1) {
+    BackgroundColor lightBlue
+  }
+}
+</style>
+* IT Consulting Practice
+** Client Onboarding
+*** Initial consultation
+*** Requirements gathering
+*** Contract signing
+*** Setup and integration
+** Project Management
+*** Task allocation
+*** Timeline tracking
+*** Resource management
+*** Risk assessment
+** Reporting and Analytics
+*** Data collection
+*** Dashboard creation
+*** Performance metrics
+*** Trend analysis
+** Billing and Invoicing
+*** Time tracking
+*** Expense management
+*** Invoice generation
+*** Payment processing
+** Customer Support
+*** Helpdesk ticketing
+*** Knowledge base
+*** Remote assistance
+*** Issue escalation
+** Marketing and Lead Generation
+*** Content marketing
+*** Social media management
+*** Email campaigns
+*** Lead scoring
+@endmindmap

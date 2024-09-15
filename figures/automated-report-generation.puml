@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #EEEBDC
+skinparam handwritten false
+
+skinparam activity {
+  BackgroundColor #FFD700
+  BorderColor #FF8C00
+  FontColor #000000
+}
+
+skinparam arrow {
+  Color #4169E1
+  FontColor #000000
+}
+
+start
+:Set up n8n workflow;
+:Pull data from various sources;
+note right: Could include databases,\nAPIs, or file systems
+:Process and format data;
+note left: Apply transformations,\nfilters, and calculations
+:Generate PDF report;
+note right: Use n8n PDF\ncreation nodes
+:Email report to stakeholders;
+note left: Automated on\na schedule
+stop
+
+@enduml
