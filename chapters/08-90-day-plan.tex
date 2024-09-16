@@ -1,5 +1,6 @@
 \chapter{Your 90-Day Automation Action Plan}
 
+
 \section{Introduction}
 
 Welcome to your 90-day automation journey! This chapter will guide you through a comprehensive action plan to transform your IT consulting practice through automation. We'll break down the next three months into manageable bi-weekly segments, each building upon the last to help you progressively enhance your automation skills and deliver tangible results for your clients.
@@ -18,7 +19,34 @@ Let's start by outlining our key objectives for this 90-day plan:
     \item Build a portfolio of successful automations to showcase to potential clients
 \end{itemize}
 
-% TODO @illustrate: Visual timeline of the 90-day plan, showing key milestones and objectives
+\begin{tikzpicture}[scale=1.2]
+    % Title
+    \node[font=\Large\bfseries] at (0,8) {90-Day Automation Action Plan};
+
+    % Vertical timeline
+    \draw[thick] (0,0) -- (0,7);
+
+    % Milestones and phases
+    \foreach \y/\day/\milestone/\phase in {
+        0/0/Foundation/{Setup \& First Project},
+        1/20/{Expand Toolkit}/{NoCoDB Integration},
+        2/40/{BudiBase Intro}/{Client Dashboard},
+        3/60/{Advanced Auto}/{External API Integration},
+        4/80/Optimization/{Performance Analytics},
+        5/100/{Final Project}/{Comprehensive Automation},
+        6/120/Evaluation/{Impact Assessment}
+    } {
+        \node[circle, fill=red, inner sep=2pt] at (0,\y) {};
+        \node[left, text width=3cm, align=right] at (-0.2,\y) {\milestone};
+        \node[right, text width=4cm, align=left] at (0.2,\y) {\phase};
+        \node[right] at (4.5,\y) {Day \day};
+    }
+
+    % Progress bar
+    \draw[thick, green!60!black] (5,0) -- (5,6);
+    \node[above] at (5,6.2) {Progress};
+\end{tikzpicture}
+
 
 \section{Weeks 1-2: Foundation and First Automation}
 
@@ -54,7 +82,26 @@ Choose a simple, high-impact task to automate. Consider starting with one of the
 \subsubsection{Step 3: Implement Your First Automation}
 Use n8n to create a workflow for your chosen task. Here's a basic example of an automated email response system:
 
-% TODO @illustrate: Diagram of a simple n8n workflow for email automation
+\begin{tikzpicture}[node distance=3cm, auto]
+            % Define styles
+    \tikzstyle{process} = [rectangle, minimum width=3.5cm, minimum height=1.2cm, text centered, draw=black, fill=blue!20]
+    \tikzstyle{decision} = [diamond, minimum width=4cm, minimum height=2cm, text centered, draw=black, fill=green!20]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+
+    % Nodes
+    \node (start) [process] {Email Received};
+    \node (check) [decision, below of=start, yshift=-2cm] {Check Content};
+    \node (auto) [process, below left of=check, xshift=-2cm, yshift=-2cm] {Send Auto-Response};
+    \node (forward) [process, below right of=check, xshift=2cm, yshift=-2cm] {Forward to Team};
+    \node (end) [process, below of=check, yshift=-5cm] {Mark as Handled};
+
+    % Arrows
+    \draw [arrow] (start) -- (check);
+    \draw [arrow] (check) -- node[left, xshift=-0.5cm] {Common Query} (auto);
+    \draw [arrow] (check) -- node[right, xshift=0.5cm] {Complex Issue} (forward);
+    \draw [arrow] (auto) |- (end);
+    \draw [arrow] (forward) |- (end);
+\end{tikzpicture}
 
 \subsubsection{Step 4: Measure and Record Baseline Metrics}
 Before fully implementing your automation, measure how long the task takes manually. Record this in your progress tracker. This will be crucial for demonstrating the value of your automation efforts later.
@@ -67,6 +114,7 @@ At the end of week 2, reflect on your progress:
     \item Have you completed your first automation project?
     \item What challenges did you face, and how did you overcome them?
 \end{itemize}
+
 
 \section{Weeks 3-4: Expanding Your Toolkit}
 
@@ -107,7 +155,42 @@ Start tracking the time saved by your automations:
     \item Calculate the potential time savings if applied across all your clients
 \end{itemize}
 
-% TODO @illustrate: Graph showing time savings from manual vs. automated processes
+\begin{tikzpicture}[scale=0.8]
+            % Define colors
+    \definecolor{manualcolor}{RGB}{70,130,180}
+    \definecolor{autocolor}{RGB}{50,205,50}
+
+    % Y-axis
+    \draw[thick,->] (0,0) -- (0,10) node[anchor=south east] {Time (hours)};
+    \foreach \y in {0,2,4,6,8,10}
+    \draw (0,\y) node[anchor=east] {\y} -- (-0.1,\y);
+
+    % X-axis
+    \draw[thick,->] (0,0) -- (12,0) node[anchor=north west] {Tasks};
+
+    % Bars
+    \foreach \x/\manual/\auto/\task in {
+        1/8/2/Email Management,
+        3/6/1.5/Client Onboarding,
+        5/9/3/Reporting,
+        7/7/1/Invoicing,
+        9/5/0.5/Data Entry
+    } {
+        \fill[manualcolor] (\x,0) rectangle (\x+0.8,\manual);
+        \fill[autocolor] (\x+1,0) rectangle (\x+1.8,\auto);
+        \node[rotate=90, anchor=west] at (\x+1.4,-0.5) {\task};
+    }
+
+    % Legend
+    \node[manualcolor, fill, rectangle, minimum width=0.5cm, minimum height=0.3cm] at (8,9) {};
+    \node[right] at (8.3,9) {Manual Process};
+    \node[autocolor, fill, rectangle, minimum width=0.5cm, minimum height=0.3cm] at (8,8.4) {};
+    \node[right] at (8.3,8.4) {Automated Process};
+
+    % Title
+    \node[font=\large\bfseries] at (6,10.5) {Time Savings: Manual vs. Automated Processes};
+\end{tikzpicture}
+
 
 \section{Weeks 5-6: Introducing BudiBase and Enhancing Client Interaction}
 
@@ -150,6 +233,7 @@ Develop a tool or dashboard that provides value directly to your clients:
 
 % TODO @screenshot: Client-facing dashboard created with BudiBase
 
+
 \section{Weeks 7-8: Advanced Automation and Integration}
 
 \subsection{Objectives}
@@ -178,8 +262,55 @@ Expand your automation capabilities by integrating with external services:
     \item Integrate with project management tools like Jira or Trello
     \item Implement automation with cloud storage services like Google Drive or Dropbox
 \end{itemize}
+\begin{tikzpicture}[node distance=2cm, auto]
+            % Define styles
+    \tikzstyle{process} = [rectangle, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=blue!20]
+    \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!20]
+    \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!20]
+    \tikzstyle{cloud} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!20]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
 
-% TODO @illustrate: Diagram of a complex n8n workflow with multiple integrations
+    % Nodes
+    \node (start) [cloud] {Start};
+    \node (trigger) [io, below of=start] {Email Trigger};
+    \node (parse) [process, below of=trigger] {Parse Email};
+    \node (decision) [decision, below of=parse, yshift=-1cm] {Type?};
+    \node (crm) [cloud, below left of=decision, xshift=-2cm, yshift=-1cm] {CRM (Salesforce)};
+    \node (pm) [cloud, below of=decision, yshift=-1cm] {PM (Jira)};
+    \node (storage) [cloud, below right of=decision, xshift=2cm, yshift=-1cm] {Storage (Dropbox)};
+    \node (update) [process, below of=pm, yshift=-1cm] {Update Database};
+    \node (report) [process, below of=update] {Generate Report};
+    \node (send) [io, below of=report] {Send Notification};
+    \node (end) [cloud, below of=send] {End};
+
+    % Arrows
+    \draw [arrow] (start) -- (trigger);
+    \draw [arrow] (trigger) -- (parse);
+    \draw [arrow] (parse) -- (decision);
+    \draw [arrow] (decision) -- node[left] {Lead} (crm);
+    \draw [arrow] (decision) -- node[right] {Task} (pm);
+    \draw [arrow] (decision) -- node[right] {Document} (storage);
+    \draw [arrow] (crm) |- (update);
+    \draw [arrow] (pm) -- (update);
+    \draw [arrow] (storage) |- (update);
+    \draw [arrow] (update) -- (report);
+    \draw [arrow] (report) -- (send);
+    \draw [arrow] (send) -- (end);
+
+    % External API labels
+    \node [text width=3cm, text centered, above of=crm, yshift=-0.5cm] {Salesforce API};
+    \node [text width=3cm, text centered, above of=pm, yshift=-0.5cm] {Jira API};
+    \node [text width=3cm, text centered, above of=storage, yshift=-0.5cm] {Dropbox API};
+
+    % Database
+    \node (db) [cylinder, shape border rotate=90, draw, minimum height=2cm, minimum width=1cm, fill=yellow!20, right of=update, xshift=3cm] {NoCoDB};
+    \draw [arrow, dashed] (update) -- (db);
+    \draw [arrow, dashed] (db) -- (report);
+
+    % Title
+    \node[font=\large\bfseries] at (0,-11) {Complex n8n Workflow with Multiple Integrations};
+\end{tikzpicture}
+
 
 \section{Weeks 9-10: Optimization and Scaling}
 
@@ -212,6 +343,7 @@ Set up systems to track the effectiveness of your automations:
 
 % TODO @screenshot: Analytics dashboard in BudiBase showing automation performance metrics
 
+
 \section{Weeks 11-12: Final Project and Evaluation}
 
 \subsection{Objectives}
@@ -241,7 +373,67 @@ Assess the impact of your 90-day automation journey:
     \item Gather feedback from team members or clients who have interacted with your automations
 \end{itemize}
 
-% TODO @illustrate: Infographic showing the overall impact of the 90-day automation journey
+\begin{tikzpicture}[scale=0.8]
+            % Background
+    \fill[rounded corners=15pt, fill=gray!10] (-1,-1) rectangle (15,12);
+
+    % Title
+    \node[font=\Large\bfseries] at (7,11) {90-Day Automation Journey Impact};
+
+    % Time Saved Section
+    \begin{scope}[shift={(0.5,8)}]
+    \draw[fill=blue!20, rounded corners] (0,0) rectangle (6,2);
+    \node[font=\bfseries] at (3,1.7) {Time Saved};
+    \node[font=\LARGE] at (3,0.7) {120+ hours};
+    \end{scope}
+
+    % Projects Completed Section
+    \begin{scope}[shift={(7.5,8)}]
+    \draw[fill=green!20, rounded corners] (0,0) rectangle (6,2);
+    \node[font=\bfseries] at (3,1.7) {Projects Completed};
+    \node[font=\LARGE] at (3,0.7) {6+};
+    \end{scope}
+
+    % Tools Mastered Section
+    \begin{scope}[shift={(0.5,5)}]
+    \draw[fill=yellow!20, rounded corners] (0,0) rectangle (13,2);
+    \node[font=\bfseries] at (6.5,1.7) {Tools Mastered};
+    \foreach \x/\tool in {2/n8n, 6.5/NoCoDB, 11/BudiBase} {
+        \node[circle, fill=white, draw=black, minimum size=1.5cm] at (\x,0.7) {\tool};
+    }
+    \end{scope}
+
+    % Skills Gained Section
+    \begin{scope}[shift={(0.5,2)}]
+    \draw[fill=red!20, rounded corners] (0,0) rectangle (13,2);
+    \node[font=\bfseries] at (6.5,1.7) {Skills Gained};
+    \foreach \x/\skill in {
+        1.5/Workflow Automation,
+        4.5/Database Management,
+        7.5/API Integration,
+        10.5/Custom App Development
+    } {
+        \node[draw, rounded corners, fill=white, text width=2.5cm, align=center] at (\x,0.7) {\skill};
+    }
+    \end{scope}
+
+    % Client Satisfaction
+    \begin{scope}[shift={(0.5,-1)}]
+    \draw[fill=purple!20, rounded corners] (0,0) rectangle (6,2);
+    \node[font=\bfseries] at (3,1.7) {Client Satisfaction};
+    \foreach \x in {1,...,5} {
+        \fill[yellow] (\x*0.8,0.7) -- ++ (18:0.3) -- ++ (162:0.3) -- cycle;
+    }
+    \end{scope}
+
+    % ROI
+    \begin{scope}[shift={(7.5,-1)}]
+    \draw[fill=orange!20, rounded corners] (0,0) rectangle (6,2);
+    \node[font=\bfseries] at (3,1.7) {ROI};
+    \node[font=\LARGE] at (3,0.7) {300\%};
+    \end{scope}
+\end{tikzpicture}
+
 
 \section{Conclusion}
 
