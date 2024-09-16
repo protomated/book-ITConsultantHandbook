@@ -1,8 +1,10 @@
 \chapter{Future-Proofing Your Consulting Career}
 
+
 \section{Introduction}
 
 In the rapidly evolving landscape of IT consulting, staying ahead of the curve is not just an advantage—it's a necessity. This chapter will explore emerging trends in IT automation, essential skills for the AI-augmented consultant, ethical considerations, strategies for continuous learning, potential challenges, and key technologies to watch. By embracing these concepts, you'll position yourself as a forward-thinking consultant ready to tackle the challenges of tomorrow.
+
 
 \section{Emerging Trends in IT Automation (2024-2029)}
 
@@ -44,7 +46,36 @@ We anticipate:
     \item Integration of AI capabilities into low-code platforms, enabling "AI-assisted development"
 \end{itemize}
 
-% TODO @illustrate: Timeline or infographic showing the evolution of automation trends from 2024 to 2029
+\begin{tikzpicture}[scale=0.8, transform shape]
+        % Timeline
+    \draw[-, ultra thick, draw=gray!50] (0,0) -- (12,0);
+
+    % Years
+    \foreach \x/\year in {0/2024, 2.4/2025, 4.8/2026, 7.2/2027, 9.6/2028, 12/2029}
+    \node[below] at (\x,0) {\textbf{\year}};
+
+    % Trend lines
+    \draw[thick, blue] (0,1) to[out=10, in=170] (12,0.5);
+    \draw[thick, red] (0,2) to[out=10, in=170] (12,1.5);
+    \draw[thick, green] (0,1.5) to[out=10, in=170] (12,1);
+    \draw[thick, purple] (3,1.75) to[out=10, in=170] (12,2);
+    \draw[thick, orange] (6,0.75) to[out=10, in=170] (12,0.25);
+
+    % Trend labels (rotated for better fit)
+    \node[above, text width=2.5cm, align=center, rotate=10] at (1,1) {Hyperautomation};
+    \node[above, text width=2.5cm, align=center, rotate=10] at (2.5,2) {AI-Driven Automation};
+    \node[above, text width=2.5cm, align=center, rotate=10] at (4,1.5) {Low-Code/No-Code Platforms};
+    \node[above, text width=2.5cm, align=center, rotate=10] at (7,1.75) {Automation Fabric};
+    \node[above, text width=2.5cm, align=center, rotate=10] at (9,0.75) {AutoML Platforms};
+
+    % Legend
+    \node[right, blue, scale=0.8] at (12,0.5) {Hyperautomation};
+    \node[right, red, scale=0.8] at (12,1.5) {AI-Driven Automation};
+    \node[right, green, scale=0.8] at (12,1) {Low-Code/No-Code};
+    \node[right, purple, scale=0.8] at (12,2) {Automation Fabric};
+    \node[right, orange, scale=0.8] at (12,0.25) {AutoML Platforms};
+\end{tikzpicture}
+
 
 \section{Skills to Develop for the AI-Augmented Consultant}
 
@@ -74,7 +105,54 @@ Cultivate these abilities:
     \item Change Management: Expertise in guiding organizations through digital transformation
 \end{itemize}
 
-% TODO @illustrate: Skill matrix showing the balance of technical and soft skills for future IT consultants
+\begin{tikzpicture}[scale=0.8, transform shape]
+        % Define colors
+    \definecolor{techcolor}{RGB}{70,130,180} % Steel Blue
+    \definecolor{softcolor}{RGB}{255,165,0} % Orange
+    \definecolor{textcolor}{RGB}{0,0,0} % Black for text
+
+    % Create the main grid
+    \draw[step=1cm,gray!30,very thin] (0,0) grid (10,10);
+
+    % Draw axes
+    \draw[->] (0,0) -- (10.5,0) node[right] {Technical Skills};
+    \draw[->] (0,0) -- (0,10.5) node[above] {Soft Skills};
+
+    % Technical skills (centered on bars)
+    \node[textcolor, rotate=90, anchor=center] at (0.5,4) {AI \& ML};
+    \node[textcolor, rotate=90, anchor=center] at (2.5,3.5) {Data Analysis};
+    \node[textcolor, rotate=90, anchor=center] at (4.5,4) {Cloud Computing};
+    \node[textcolor, rotate=90, anchor=center] at (6.5,3) {Cybersecurity};
+    \node[textcolor, rotate=90, anchor=center] at (8.5,2.5) {Low-Code/No-Code};
+
+    % Soft skills
+    \node[textcolor, anchor=east] at (-0.25,1) {Adaptability};
+    \node[textcolor, anchor=east] at (-0.25,3) {Strategic Thinking};
+    \node[textcolor, anchor=east] at (-0.25,5) {Ethical Decision Making};
+    \node[textcolor, anchor=east] at (-0.25,7) {Communication};
+    \node[textcolor, anchor=east] at (-0.25,9) {Change Management};
+
+    % Skill levels
+    \fill[techcolor,opacity=0.5] (0,0) rectangle (1,8);
+    \fill[techcolor,opacity=0.5] (2,0) rectangle (3,7);
+    \fill[techcolor,opacity=0.5] (4,0) rectangle (5,8);
+    \fill[techcolor,opacity=0.5] (6,0) rectangle (7,6);
+    \fill[techcolor,opacity=0.5] (8,0) rectangle (9,5);
+
+    \fill[softcolor,opacity=0.5] (0,0) rectangle (10,1);
+    \fill[softcolor,opacity=0.5] (0,2) rectangle (10,3);
+    \fill[softcolor,opacity=0.5] (0,4) rectangle (10,5);
+    \fill[softcolor,opacity=0.5] (0,6) rectangle (10,7);
+    \fill[softcolor,opacity=0.5] (0,8) rectangle (10,9);
+
+    % Title
+    \node[font=\large\bfseries] at (5,10.5) {Skill Matrix for Future IT Consultants};
+
+    % Legend
+    \node[techcolor, anchor=west] at (0,-1.5) {\textbf{Technical Skills}};
+    \node[softcolor, anchor=west] at (5,-1.5) {\textbf{Soft Skills}};
+\end{tikzpicture}
+
 
 \section{Ethical Considerations and Best Practices}
 
@@ -110,7 +188,62 @@ Key actions include:
     \item Implement explainable AI techniques to understand and mitigate bias
 \end{itemize}
 
-% TODO @illustrate: Decision tree or flowchart for ethical decision-making in automation projects
+\begin{tikzpicture}
+    [
+    scale=0.7, transform shape,
+    node distance = 1.5cm and 2cm,
+    box/.style = {rectangle, draw, rounded corners, minimum width=2.5cm, minimum height=0.8cm, align=center, font=\small},
+    decision/.style = {diamond, draw, aspect=2, minimum width=2.5cm, align=center, font=\small},
+    arrow/.style = {->, >=stealth, thin}
+    ]
+
+% Start node
+    \node[box] (start) {Start Automation Project};
+
+% First decision
+    \node[decision, below=of start] (privacy) {Involves\\ sensitive data?};
+
+% Privacy branch
+    \node[box, below left=of privacy] (data_protection) {Implement data\\ protection};
+    \node[box, below=of data_protection] (privacy_audit) {Conduct privacy\\ assessment};
+
+% Job impact decision
+    \node[decision, below right=of privacy] (job_impact) {Impacts\\ existing jobs?};
+
+% Job impact branch
+    \node[box, right=of job_impact] (transition_plan) {Develop transition\\ plan};
+    \node[box, below=of transition_plan] (communicate) {Communicate\\ changes};
+
+% AI decision
+    \node[decision, below=of job_impact] (ai_decision) {Uses AI/ML\\ models?};
+
+% AI branch
+    \node[box, below left=of ai_decision] (bias_check) {Check for\\ algorithmic bias};
+    \node[box, below right=of ai_decision] (explainable) {Implement\\ explainable AI};
+
+% Final steps
+    \node[box, below=2cm of ai_decision] (review) {Review with\\ stakeholders};
+    \node[box, below=of review] (implement) {Implement with\\ ethical safeguards};
+
+% Arrows
+    \draw[arrow] (start) -- (privacy);
+    \draw[arrow] (privacy) -- node[left, font=\tiny] {Yes} (data_protection);
+    \draw[arrow] (data_protection) -- (privacy_audit);
+    \draw[arrow] (privacy) -- node[right, font=\tiny] {No} (job_impact);
+    \draw[arrow] (job_impact) -- node[above, font=\tiny] {Yes} (transition_plan);
+    \draw[arrow] (transition_plan) -- (communicate);
+    \draw[arrow] (job_impact) -- node[right, font=\tiny] {No} (ai_decision);
+    \draw[arrow] (ai_decision) -- node[left, font=\tiny] {Yes} (bias_check);
+    \draw[arrow] (ai_decision) -- node[right, font=\tiny] {Yes} (explainable);
+    \draw[arrow] (privacy_audit) |- (review);
+    \draw[arrow] (communicate) |- (review);
+    \draw[arrow] (bias_check) -- (review);
+    \draw[arrow] (explainable) -- (review);
+    \draw[arrow] (ai_decision) -- node[right, font=\tiny] {No} (review);
+    \draw[arrow] (review) -- (implement);
+
+\end{tikzpicture}
+
 
 \section{Staying Adaptable and Continuously Learning}
 
@@ -142,6 +275,7 @@ In the fast-paced world of IT consulting, the ability to learn and adapt quickly
 
 % TODO @screenshot: Example of a personal learning dashboard in Notion or a similar tool
 
+
 \section{Potential Challenges and Adaptation Strategies}
 
 As the IT consulting landscape evolves, several challenges may emerge. By anticipating these challenges, you can develop strategies to not only overcome them but to thrive in the face of change.
@@ -168,7 +302,64 @@ As the IT consulting landscape evolves, several challenges may emerge. By antici
     \item Invest in data analytics to provide more personalized insights
 \end{itemize}
 
-% TODO @illustrate: Comparison chart showing traditional consulting model vs. AI-augmented consulting model
+\begin{tikzpicture}
+    [
+    scale=1.2,
+    transform shape,
+    node distance=1.5cm and 4cm,
+    box/.style={
+        rectangle,
+        rounded corners,
+        draw=black,
+        thick,
+        minimum width=3cm,
+        minimum height=1cm,
+        text centered,
+        font=\sffamily
+    },
+    trad/.style={box, fill=blue!10},
+    ai/.style={box, fill=green!10},
+    arrow/.style={->, >=stealth, thick},
+    compare/.style={->, >=stealth, thick, dashed, bend left=20}
+    ]
+
+% Title
+    \node[font=\sffamily\Large\bfseries] at (0,5) {Traditional vs. AI-Augmented Consulting Model};
+
+% Traditional Model
+    \node[font=\sffamily\bfseries] at (-3.5,3.75) {Traditional Model};
+    \node[trad] (t1) at (-3.5,3) {Data Collection};
+    \node[trad] (t2) at (-3.5,1.5) {Manual Analysis};
+    \node[trad] (t3) at (-3.5,0) {Recommendation};
+    \node[trad] (t4) at (-3.5,-1.5) {Implementation};
+
+    \draw[arrow] (t1) -- (t2);
+    \draw[arrow] (t2) -- (t3);
+    \draw[arrow] (t3) -- (t4);
+
+% AI-Augmented Model
+    \node[font=\sffamily\bfseries] at (3.5,3.75) {AI-Augmented Model};
+    \node[ai] (a1) at (3.5,3) {Automated Data Collection};
+    \node[ai] (a2) at (3.5,1.5) {AI-Powered Analysis};
+    \node[ai] (a3) at (3.5,0) {Human Interpretation};
+    \node[ai] (a4) at (3.5,-1.5) {AI-Assisted Implementation};
+
+    \draw[arrow] (a1) -- (a2);
+    \draw[arrow] (a2) -- (a3);
+    \draw[arrow] (a3) -- (a4);
+
+% Comparison arrows
+    \draw[compare, red] (t1) to node[midway, above, font=\sffamily] {Faster} (a1);
+    \draw[compare, red] (t2) to node[midway, above, font=\sffamily] {More accurate} (a2);
+    \draw[compare, blue] (a3) to node[midway, above, font=\sffamily] {Still crucial} (t3);
+    \draw[compare, red] (t4) to node[midway, above, font=\sffamily] {More efficient} (a4);
+
+% Legend
+    \node[trad, minimum width=2cm] at (-2,-3) {Human-driven};
+    \node[ai, minimum width=2cm] at (2,-3) {AI-augmented};
+
+\end{tikzpicture}
+
 
 \section{Key Technologies and Platforms for Future-Ready Consultants}
 
@@ -192,7 +383,44 @@ Blockchain technology is moving beyond cryptocurrency to solve enterprise-level 
 
 \textbf{Potential applications:} Supply chain tracking, secure data sharing, smart contracts
 
-% TODO @illustrate: Technology radar showing the relative maturity and potential impact of these emerging technologies
+\begin{tikzpicture}[scale=1.2, transform shape]
+        % Define colors
+    \definecolor{adoptcolor}{RGB}{0,128,0}    % Green
+    \definecolor{trialcolor}{RGB}{255,165,0}  % Orange
+    \definecolor{assesscolor}{RGB}{0,0,255}   % Blue
+    \definecolor{holdcolor}{RGB}{128,128,128} % Gray
+
+    % Draw radar circles
+    \foreach \r/\lbl in {4/Hold, 3/Assess, 2/Trial, 1/Adopt}
+        {
+        \draw[gray!50, thin] (0,0) circle (\r cm);
+        \node[font=\small, gray] at (45:\r) {\lbl};
+    }
+
+    % Draw sector lines
+    \foreach \angle in {0,45,...,315}
+        {
+        \draw[gray!50, thin] (0,0) -- (\angle:4);
+    }
+
+    % Plot technologies with adjusted positions and text wrapping
+    \node[adoptcolor, font=\small, text width=2cm, align=center] at (20:0.7) {Edge Computing};
+    \node[adoptcolor, font=\small, text width=1cm, align=center] at (70:0.9) {5G};
+    \node[trialcolor, font=\small, text width=2.5cm, align=center] at (110:2.5) {Blockchain for Enterprise};
+    \node[assesscolor, font=\small, text width=2.5cm, align=center] at (200:3.2) {Quantum Computing};
+    \node[trialcolor, font=\small, text width=2.5cm, align=center] at (290:2.2) {AI-Driven Automation};
+    \node[adoptcolor, font=\small, text width=2cm, align=center] at (340:0.6) {Hyper- automation};
+
+    % Title
+    \node[font=\Large\bfseries] at (0,5) {Technology Radar: Emerging Tech in IT Consulting};
+
+    % Legend
+    \node[adoptcolor, font=\small] at (-4,-4.5) {Adopt};
+    \node[trialcolor, font=\small] at (-1.5,-4.5) {Trial};
+    \node[assesscolor, font=\small] at (1,-4.5) {Assess};
+    \node[holdcolor, font=\small] at (3.5,-4.5) {Hold};
+\end{tikzpicture}
+
 
 \section{Conclusion}
 
