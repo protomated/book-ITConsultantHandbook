@@ -262,7 +262,8 @@ Expand your automation capabilities by integrating with external services:
     \item Integrate with project management tools like Jira or Trello
     \item Implement automation with cloud storage services like Google Drive or Dropbox
 \end{itemize}
-\begin{tikzpicture}[node distance=2cm, auto]
+
+\begin{tikzpicture}[node distance=1.5cm, auto, scale=0.8]
             % Define styles
     \tikzstyle{process} = [rectangle, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=blue!20]
     \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!20]
@@ -270,15 +271,18 @@ Expand your automation capabilities by integrating with external services:
     \tikzstyle{cloud} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!20]
     \tikzstyle{arrow} = [thick,->,>=stealth]
 
+    % Title at the top
+    \node[font=\large\bfseries] at (0,8) {Complex n8n Workflow with Multiple Integrations};
+
     % Nodes
-    \node (start) [cloud] {Start};
+    \node (start) [cloud] at (0,6) {Start};
     \node (trigger) [io, below of=start] {Email Trigger};
     \node (parse) [process, below of=trigger] {Parse Email};
-    \node (decision) [decision, below of=parse, yshift=-1cm] {Type?};
-    \node (crm) [cloud, below left of=decision, xshift=-2cm, yshift=-1cm] {CRM (Salesforce)};
-    \node (pm) [cloud, below of=decision, yshift=-1cm] {PM (Jira)};
-    \node (storage) [cloud, below right of=decision, xshift=2cm, yshift=-1cm] {Storage (Dropbox)};
-    \node (update) [process, below of=pm, yshift=-1cm] {Update Database};
+    \node (decision) [decision, below of=parse, yshift=-0.5cm] {Type?};
+    \node (crm) [cloud, below left of=decision, xshift=-2cm, yshift=-0.5cm] {CRM (Salesforce)};
+    \node (pm) [cloud, below of=decision, yshift=-0.5cm] {PM (Jira)};
+    \node (storage) [cloud, below right of=decision, xshift=2cm, yshift=-0.5cm] {Storage (Dropbox)};
+    \node (update) [process, below of=pm, yshift=-0.5cm] {Update Database};
     \node (report) [process, below of=update] {Generate Report};
     \node (send) [io, below of=report] {Send Notification};
     \node (end) [cloud, below of=send] {End};
@@ -303,12 +307,9 @@ Expand your automation capabilities by integrating with external services:
     \node [text width=3cm, text centered, above of=storage, yshift=-0.5cm] {Dropbox API};
 
     % Database
-    \node (db) [cylinder, shape border rotate=90, draw, minimum height=2cm, minimum width=1cm, fill=yellow!20, right of=update, xshift=3cm] {NoCoDB};
+    \node (db) [cylinder, shape border rotate=90, draw, minimum height=2cm, minimum width=1cm, fill=yellow!20, right of=update, xshift=2cm] {NoCoDB};
     \draw [arrow, dashed] (update) -- (db);
     \draw [arrow, dashed] (db) -- (report);
-
-    % Title
-    \node[font=\large\bfseries] at (0,-11) {Complex n8n Workflow with Multiple Integrations};
 \end{tikzpicture}
 
 
@@ -375,62 +376,68 @@ Assess the impact of your 90-day automation journey:
 
 \begin{tikzpicture}[scale=0.8]
             % Background
-    \fill[rounded corners=15pt, fill=gray!10] (-1,-1) rectangle (15,12);
+    \fill[rounded corners=15pt, fill=gray!10] (-1,-1) rectangle (15,13);
 
     % Title
-    \node[font=\Large\bfseries] at (7,11) {90-Day Automation Journey Impact};
+    \node[font=\Large\bfseries] at (7,12) {90-Day Automation Journey Impact};
 
     % Time Saved Section
-    \begin{scope}[shift={(0.5,8)}]
-    \draw[fill=blue!20, rounded corners] (0,0) rectangle (6,2);
-    \node[font=\bfseries] at (3,1.7) {Time Saved};
-    \node[font=\LARGE] at (3,0.7) {120+ hours};
+    \begin{scope}
+        [shift={(0.5,9)}]
+        \draw[fill=blue!20, rounded corners] (0,0) rectangle (6,2);
+        \node[font=\bfseries] at (3,1.7) {Time Saved};
+        \node[font=\LARGE] at (3,0.7) {120+ hours};
     \end{scope}
 
     % Projects Completed Section
-    \begin{scope}[shift={(7.5,8)}]
-    \draw[fill=green!20, rounded corners] (0,0) rectangle (6,2);
-    \node[font=\bfseries] at (3,1.7) {Projects Completed};
-    \node[font=\LARGE] at (3,0.7) {6+};
+    \begin{scope}
+        [shift={(7.5,9)}]
+        \draw[fill=green!20, rounded corners] (0,0) rectangle (6,2);
+        \node[font=\bfseries] at (3,1.7) {Projects Completed};
+        \node[font=\LARGE] at (3,0.7) {6+};
     \end{scope}
 
     % Tools Mastered Section
-    \begin{scope}[shift={(0.5,5)}]
-    \draw[fill=yellow!20, rounded corners] (0,0) rectangle (13,2);
-    \node[font=\bfseries] at (6.5,1.7) {Tools Mastered};
-    \foreach \x/\tool in {2/n8n, 6.5/NoCoDB, 11/BudiBase} {
-        \node[circle, fill=white, draw=black, minimum size=1.5cm] at (\x,0.7) {\tool};
-    }
+    \begin{scope}
+        [shift={(0.5,5.5)}]
+        \draw[fill=yellow!20, rounded corners] (0,0) rectangle (13,2.5);
+        \node[font=\bfseries] at (6.5,2.2) {Tools Mastered};
+        \foreach \x/\tool in {2/n8n, 6.5/NoCoDB, 11/BudiBase} {
+            \node[circle, fill=white, draw=black, minimum size=1.5cm] at (\x,0.8) {\tool};
+        }
     \end{scope}
 
     % Skills Gained Section
-    \begin{scope}[shift={(0.5,2)}]
-    \draw[fill=red!20, rounded corners] (0,0) rectangle (13,2);
-    \node[font=\bfseries] at (6.5,1.7) {Skills Gained};
-    \foreach \x/\skill in {
-        1.5/Workflow Automation,
-        4.5/Database Management,
-        7.5/API Integration,
-        10.5/Custom App Development
-    } {
-        \node[draw, rounded corners, fill=white, text width=2.5cm, align=center] at (\x,0.7) {\skill};
-    }
+    \begin{scope}
+        [shift={(0.5,2)}]
+        \draw[fill=red!20, rounded corners] (0,0) rectangle (13,2);
+        \node[font=\bfseries] at (6.5,1.7) {Skills Gained};
+        \foreach \x/\skill in {
+            1.5/Workflow Automation,
+            4.5/Database Management,
+            7.5/API Integration,
+            10.5/Custom App Development
+        } {
+            \node[draw, rounded corners, fill=white, text width=2.5cm, align=center] at (\x,0.7) {\skill};
+        }
     \end{scope}
 
     % Client Satisfaction
-    \begin{scope}[shift={(0.5,-1)}]
-    \draw[fill=purple!20, rounded corners] (0,0) rectangle (6,2);
-    \node[font=\bfseries] at (3,1.7) {Client Satisfaction};
-    \foreach \x in {1,...,5} {
-        \fill[yellow] (\x*0.8,0.7) -- ++ (18:0.3) -- ++ (162:0.3) -- cycle;
-    }
+    \begin{scope}
+        [shift={(0.5,-1)}]
+        \draw[fill=purple!20, rounded corners] (0,0) rectangle (6,2);
+        \node[font=\bfseries] at (3,1.7) {Client Satisfaction};
+        \foreach \x in {1,...,5} {
+            \fill[yellow] (\x*0.8,0.7) -- ++ (18:0.3) -- ++ (162:0.3) -- cycle;
+        }
     \end{scope}
 
     % ROI
-    \begin{scope}[shift={(7.5,-1)}]
-    \draw[fill=orange!20, rounded corners] (0,0) rectangle (6,2);
-    \node[font=\bfseries] at (3,1.7) {ROI};
-    \node[font=\LARGE] at (3,0.7) {300\%};
+    \begin{scope}
+        [shift={(7.5,-1)}]
+        \draw[fill=orange!20, rounded corners] (0,0) rectangle (6,2);
+        \node[font=\bfseries] at (3,1.7) {ROI};
+        \node[font=\LARGE] at (3,0.7) {300\%};
     \end{scope}
 \end{tikzpicture}
 
