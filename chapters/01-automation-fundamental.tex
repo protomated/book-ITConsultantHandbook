@@ -1,8 +1,10 @@
 \chapter{Automation Fundamentals for IT Consultants}
 
+
 \section{Introduction}
 
 As a small IT consulting firm, your time is your most valuable asset. In this chapter, we'll dive into the fundamental concepts of automation and explore how they can revolutionize your consulting practice. We'll start with a practical example that can save you hours each week and transform how you handle client communications.
+
 
 \section{Understanding Automation in IT Consulting}
 
@@ -18,7 +20,44 @@ Automation in IT consulting refers to the use of technology to perform repetitiv
     \item \textbf{Data-Driven Insights}: Automated processes can generate valuable data for decision-making.
 \end{itemize}
 
-% TODO @illustrate: Infographic showing the benefits of automation in IT consulting
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        [
+        benefit/.style={rectangle, draw, fill=green!20, rounded corners, text width=3cm, align=center, minimum height=1cm},
+        icon/.style={circle, fill=#1, minimum size=0.8cm},
+        arrow/.style={->, >=stealth, thick}
+        ]
+        % Title
+        \node[font=\Large\bfseries] (title) at (0,4) {Benefits of Automation in IT Consulting};
+
+        % Central node
+        \node[rectangle, draw, fill=blue!20, minimum width=4cm, minimum height=2cm, align=center] (automation) at (0,0) {Automation};
+
+        % Benefit nodes
+        \node[benefit] (time) at (-6,2) {Time Savings};
+        \node[benefit] (consistency) at (-6,-2) {Consistency};
+        \node[benefit] (scalability) at (0,-3) {Scalability};
+        \node[benefit] (satisfaction) at (6,-2) {Improved Client Satisfaction};
+        \node[benefit] (insights) at (6,2) {Data-Driven Insights};
+
+        % Icons
+        \node[icon=red!60] at (time.west) {};
+        \node[icon=yellow!60] at (consistency.west) {};
+        \node[icon=purple!60] at (scalability.south) {};
+        \node[icon=orange!60] at (satisfaction.east) {};
+        \node[icon=cyan!60] at (insights.east) {};
+
+        % Arrows
+        \draw[arrow] (automation) -- (time);
+        \draw[arrow] (automation) -- (consistency);
+        \draw[arrow] (automation) -- (scalability);
+        \draw[arrow] (automation) -- (satisfaction);
+        \draw[arrow] (automation) -- (insights);
+    \end{tikzpicture}
+    \caption{Benefits of Automation in IT Consulting}
+    \label{fig:automation_benefits}
+\end{figure}
 
 \section{Types of Automation Relevant to IT Consulting}
 
@@ -34,6 +73,7 @@ Automating client communications, notifications, and updates. Our email classifi
 \subsection{4. Infrastructure Automation}
 Automating the setup, configuration, and management of IT infrastructure. This includes automated server provisioning or network configuration.
 
+
 \section{Quick Win: AI-Powered Email Classification with n8n and OpenAI}
 
 Let's start with a common pain point: the overflowing inbox. We'll create an automation that reviews and classifies emails based on their content, helping you prioritize and respond more efficiently.
@@ -42,8 +82,46 @@ Let's start with a common pain point: the overflowing inbox. We'll create an aut
 
 \begin{figure}[h]
     \centering
-    % TODO @illustrate: Cluttered inbox vs. Organized, classified inbox
+    \begin{tikzpicture}[
+        inbox/.style={rectangle, draw, rounded corners, minimum width=5cm, minimum height=7cm},
+        email/.style={rectangle, draw, rounded corners, fill=white, minimum width=4cm, minimum height=0.8cm},
+        label/.style={rectangle, rounded corners, fill=#1, minimum width=0.8cm, minimum height=0.8cm},
+    ]
+        % Cluttered Inbox
+        \node[inbox] (cluttered) at (0,0) {};
+        \node[above] at (cluttered.north) {Cluttered Inbox};
+        \foreach \y in {2.5,1.5,0.5,-0.5,-1.5,-2.5} {
+            \node[email] at (0,\y) {};
+        }
+
+        % Arrow
+        \draw[->,thick] (3,0) -- (5,0) node[midway,above] {Automation};
+
+        % Organized Inbox
+        \node[inbox] (organized) at (8,0) {};
+        \node[above] at (organized.north) {Organized Inbox};
+
+        % Classified emails
+        \node[email] (urgent) at (8,2.5) {Urgent};
+        \node[label=red!60] at (urgent.west) {};
+
+        \node[email] (project) at (8,1.5) {Project Updates};
+        \node[label=blue!60] at (project.west) {};
+
+        \node[email] (inquiry) at (8,0.5) {New Inquiries};
+        \node[label=green!60] at (inquiry.west) {};
+
+        \node[email] (invoice) at (8,-0.5) {Invoicing};
+        \node[label=yellow!60] at (invoice.west) {};
+
+        \node[email] (admin) at (8,-1.5) {Administrative};
+        \node[label=purple!60] at (admin.west) {};
+
+        \node[email] (other) at (8,-2.5) {Other};
+        \node[label=gray!60] at (other.west) {};
+    \end{tikzpicture}
     \caption{Cluttered inbox vs. Organized, classified inbox}
+    \label{fig:inbox_comparison}
 \end{figure}
 
 Imagine starting your day with a perfectly organized inbox, where emails are automatically sorted into categories like:
@@ -71,6 +149,7 @@ Here's going to be our flow:
     \caption{Email Classification and Tagging Automation Flow}
     \label{fig:01_email_automation}
 \end{figure}
+
 
 \section{Setting Up Your Secure Automation Environment}
 
@@ -100,6 +179,7 @@ docker run -it --rm \
 \end{enumerate}
 
 % TODO @screenshot: n8n setup screen
+
 
 \section{Creating Your Email Classification Workflow}
 
@@ -133,6 +213,7 @@ Now that n8n is running, let's build our automation:
 
 % TODO @screenshot: Final Gmail node configuration for labeling
 
+
 \section{Testing and Refining Your Workflow}
 
 \begin{enumerate}
@@ -140,6 +221,7 @@ Now that n8n is running, let's build our automation:
     \item Adjust the OpenAI prompt or classification categories as needed
     \item Monitor the workflow's performance over time and make refinements
 \end{enumerate}
+
 
 \section{Security Considerations}
 
@@ -152,6 +234,7 @@ When working with email automation, security is paramount. Here are some key con
     \item Regularly audit your workflow's access and permissions
 \end{itemize}
 
+
 \section{Scaling Your Email Automation}
 
 As your consulting practice grows, you can enhance this automation:
@@ -162,6 +245,7 @@ As your consulting practice grows, you can enhance this automation:
     \item Create automated responses for common inquiries
     \item Extend the workflow to handle multiple email accounts
 \end{itemize}
+
 
 \section{Real-World Impact: A Case Study}
 
@@ -174,6 +258,7 @@ Meet Sarah, a solo IT consultant. Before implementing this automation, Sarah spe
 \end{itemize}
 
 By reclaiming 7.5 hours each week, Sarah was able to take on two additional clients without hiring help.
+
 
 \section{Conclusion}
 
