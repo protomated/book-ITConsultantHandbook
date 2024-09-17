@@ -1,23 +1,48 @@
 \chapter{Automation Fundamentals for IT Consultants}
-\input{chapters/__all-early-release}
-
 
 \section{Introduction}
 
-As a small IT consulting firm, your time is your most valuable asset. In this chapter, we'll dive into a practical automation example that can save you hours each week and revolutionize how you handle client communications.
+As a small IT consulting firm, your time is your most valuable asset. In this chapter, we'll dive into the fundamental concepts of automation and explore how they can revolutionize your consulting practice. We'll start with a practical example that can save you hours each week and transform how you handle client communications.
 
+\section{Understanding Automation in IT Consulting}
+
+Automation in IT consulting refers to the use of technology to perform repetitive tasks, streamline processes, and reduce manual intervention. It's about working smarter, not harder.
+
+\subsection{Key Benefits of Automation}
+
+\begin{itemize}
+    \item \textbf{Time Savings}: Automate repetitive tasks to focus on high-value activities.
+    \item \textbf{Consistency}: Reduce human error and ensure consistent outcomes.
+    \item \textbf{Scalability}: Handle increased workload without proportionally increasing resources.
+    \item \textbf{Improved Client Satisfaction}: Faster response times and more accurate deliverables.
+    \item \textbf{Data-Driven Insights}: Automated processes can generate valuable data for decision-making.
+\end{itemize}
+
+% TODO @illustrate: Infographic showing the benefits of automation in IT consulting
+
+\section{Types of Automation Relevant to IT Consulting}
+
+\subsection{1. Process Automation}
+Streamlining workflows and business processes. Examples include automated client onboarding or project management workflows.
+
+\subsection{2. Data Automation}
+Automating data collection, processing, and analysis. This could involve automated reporting or data migration tools.
+
+\subsection{3. Communication Automation}
+Automating client communications, notifications, and updates. Our email classification example falls under this category.
+
+\subsection{4. Infrastructure Automation}
+Automating the setup, configuration, and management of IT infrastructure. This includes automated server provisioning or network configuration.
 
 \section{Quick Win: AI-Powered Email Classification with n8n and OpenAI}
 
 Let's start with a common pain point: the overflowing inbox. We'll create an automation that reviews and classifies emails based on their content, helping you prioritize and respond more efficiently.
 
-We will solve that in this chapter.
-
 \subsection{Why This Matters}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{./figures/}
+    % TODO @illustrate: Cluttered inbox vs. Organized, classified inbox
     \caption{Cluttered inbox vs. Organized, classified inbox}
 \end{figure}
 
@@ -43,10 +68,9 @@ Here's going to be our flow:
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{./figures/01-n8n-flow}
-        \caption{Email Classification and Tagging Automation Flow}
+    \caption{Email Classification and Tagging Automation Flow}
     \label{fig:01_email_automation}
 \end{figure}
-
 
 \section{Setting Up Your Secure Automation Environment}
 
@@ -63,7 +87,7 @@ We'll use Docker for a consistent setup across all platforms.
         \item For macOS: Docker Desktop for Mac
         \item For Linux: Docker Engine
     \end{itemize}
-    \item With the installation complete, open a terminal or command prompt and run:
+    \item With Docker installed, open a terminal or command prompt and run:
     \begin{lstlisting}[language=bash, label={lst:n8n-docker-run}]
 docker run -it --rm \
   --name n8n \
@@ -71,177 +95,97 @@ docker run -it --rm \
   -v ~/.n8n:/home/node/.n8n \
   n8nio/n8n
     \end{lstlisting}
-    \item Open your browser and navigate to \url{http://localhost:5678}, you should see the setup screen: \newline
-    \begin{minipage}[t]{\linewidth}
-        \raggedright
-        \adjustbox{valign=t}{%
-            \includegraphics[width=0.75\linewidth]{./figures/01-n8n-startscreen}%
-        }
-        \medskip
-    \end{minipage}
-    \item  Fill in your details and hit "Next"
+    \item Open your browser and navigate to \url{http://localhost:5678}
+    \item Complete the setup process
 \end{enumerate}
 
-
-\importantbox{If you run into issues in your setup and want to restart from the beginning, from your terminal, delete the docker n8n directory in ~/.n8n. Then re-run the docker command}
-
+% TODO @screenshot: n8n setup screen
 
 \section{Creating Your Email Classification Workflow}
 
 Now that n8n is running, let's build our automation:
 
-\begin{enumerate}
-    \item In the n8n dashboard, click "Start from scratch"
-    \item Rename "My Workflow" in the top left corner to "Email Classifier"
-    \begin{minipage}[t]{\linewidth}
-        \raggedright
-        \adjustbox{valign=t}{%
-            \includegraphics[width=1\linewidth]{./figures/01-n8n-rename-workflow}%
-        }
-        \medskip
-    \end{minipage}
-
-\end{enumerate}
-
 \subsection{Step 1: Connect to Gmail}
 
 \begin{enumerate}
-    \item Hit the "Add first step..." and Search for "Gmail" and select "On Message Received"
-    \item Select the "Credential to connect with" then choose "- Create New Credential -"
+    \item In n8n, add a new "Gmail" node and select "On New Email"
     \item Follow the OAuth process to connect your Gmail account
-  \end{enumerate}
+\end{enumerate}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.35]{./figures/01-n8n-gmail-oauth-config}
-    \caption{The Complete OAuth config screen}
-    \label{fig:01-gmail-config}
-\end{figure}
+% TODO @screenshot: Gmail node configuration in n8n
 
 \subsection{Step 2: Integrate OpenAI for Content Analysis}
 
-Before we proceed, let's securely set up our OpenAI API access:
-
 \begin{enumerate}
-    \item Go to OpenAI's website and sign up or log in
-    \item Navigate to the API section and create a new API key
-    \item In n8n, go to Settings > Credentials and add a new credential of type "OpenAI API"
-    \item Paste your API key and save
+    \item Add an "OpenAI" node
+    \item Configure it to use the GPT-3 model for text classification
+    \item Set up the prompt to classify the email content
 \end{enumerate}
 
-Now, let's add the OpenAI node to our workflow:
-
-\begin{enumerate}
-    \item Add a new "OpenAI" node
-    \item Connect it to the Gmail trigger node
-    \item Configure it as follows:
-    \begin{itemize}
-        \item Resource: Completion
-        \item Model: gpt-4o
-        \item Prompt: "Classify the following email into one of these categories: Urgent client issue, Project update, New business inquiry, Invoicing and payment, Administrative task. Email content: \{\{\$json["body"]\}\}"
-        \item
-    \end{itemize}
-\end{enumerate}
-
-\begin{figure}[h]
-    \centering
-%    TODO @screenshot: OpenAI node configuration]
-    \caption{OpenAI node configuration}
-\end{figure}
+% TODO @screenshot: OpenAI node configuration in n8n
 
 \subsection{Step 3: Update Email Labels}
 
 \begin{enumerate}
     \item Add another "Gmail" node
-    \item Connect it to the OpenAI node
     \item Configure it to add a label based on the classification from OpenAI
 \end{enumerate}
 
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[node distance=1cm, auto, scale=0.6, transform shape]
-        % Define styles
-        \tikzstyle{block} = [rectangle, draw, fill=green!20,
-        text width=4em, text centered, rounded corners, minimum height=2.5em]
-        \tikzstyle{decision} = [diamond, draw, fill=yellow!20,
-        text width=4em, text centered, inner sep=0pt]
-        \tikzstyle{startstop} = [rectangle, rounded corners, draw, fill=red!20,
-        text width=3em, text centered, minimum height=2em]
-        \tikzstyle{line} = [draw, -latex']
+% TODO @screenshot: Final Gmail node configuration for labeling
 
-        % Place nodes
-        \node [startstop] (start) {Start};
-        \node [block, below of=start, node distance=1.5cm] (receive) {Receive email in Gmail};
-        \node [block, below of=receive, node distance=1.5cm] (sendai) {Send to OpenAI for classification};
-        \node [block, below of=sendai, node distance=1.5cm] (classify) {AI classifies by priority};
-        \node [block, below of=classify, node distance=1.5cm] (tag) {AI tags email};
-        \node [decision, below of=tag, node distance=2cm] (decide) {};
+\section{Testing and Refining Your Workflow}
 
-        \node [block, below left of=decide, node distance=2.5cm] (new) {New business inquiry};
-        \node [block, below of=decide, node distance=2cm] (admin) {Administrative task};
-        \node [block, below right of=decide, node distance=2.5cm] (invoice) {Invoicing and payment};
+\begin{enumerate}
+    \item Use n8n's built-in testing features to run your workflow with sample emails
+    \item Adjust the OpenAI prompt or classification categories as needed
+    \item Monitor the workflow's performance over time and make refinements
+\end{enumerate}
 
-        \node [block, below of=new, node distance=1.5cm] (project) {Project update};
-        \node [block, below of=invoice, node distance=1.5cm] (urgent) {Urgent client issue};
+\section{Security Considerations}
 
-        \node [startstop, below of=admin, node distance=3cm] (stop) {Stop};
+When working with email automation, security is paramount. Here are some key considerations:
 
-        % Draw edges
-        \path [line] (start) -- (receive);
-        \path [line] (receive) -- (sendai);
-        \path [line] (sendai) -- (classify);
-        \path [line] (classify) -- (tag);
-        \path [line] (tag) -- (decide);
-        \path [line] (decide) -- (new);
-        \path [line] (decide) -- (admin);
-        \path [line] (decide) -- (invoice);
-        \path [line] (new) -- (project);
-        \path [line] (invoice) -- (urgent);
-        \path [line] (project) -- (stop);
-        \path [line] (admin) -- (stop);
-        \path [line] (urgent) -- (stop);
+\begin{itemize}
+    \item Use OAuth for secure authentication with Gmail
+    \item Regularly review and rotate API keys for OpenAI
+    \item Implement error handling to prevent sensitive data leaks
+    \item Regularly audit your workflow's access and permissions
+\end{itemize}
 
-    \end{tikzpicture}
-    \caption{Email Classification Workflow}
-    \label{fig:email-classification-workflow}
-\end{figure}
+\section{Scaling Your Email Automation}
 
-\section{Putting It All Together}
+As your consulting practice grows, you can enhance this automation:
 
-Activate your workflow, and watch as your emails are automatically classified and labeled!
-
-\begin{figure}[H]
-    \centering
-%    TODO @illustrate: Before and after screenshots of a Gmail inbox
-    \caption{Before and after screenshots of a Gmail inbox}
-\end{figure}
-
+\begin{itemize}
+    \item Implement more sophisticated classification logic
+    \item Integrate with your CRM to update client records automatically
+    \item Create automated responses for common inquiries
+    \item Extend the workflow to handle multiple email accounts
+\end{itemize}
 
 \section{Real-World Impact: A Case Study}
 
-Meet Sarah, an use-case IT consultant running a 5-person firm. Before implementing this automation, Sarah spent 2 hours each day sorting through emails. After setting up the AI-powered classification:
+Meet Sarah, a solo IT consultant. Before implementing this automation, Sarah spent 2 hours each day sorting through emails. After setting up the AI-powered classification:
 
 \begin{itemize}
     \item Sarah's email processing time dropped to 30 minutes a day
-    \item Her team's response time to urgent client issues improved by 60\%
-    \item They never missed a new business inquiry, increasing potential leads by 25\%
+    \item Her response time to urgent client issues improved by 60\%
+    \item She never missed a new business inquiry, increasing potential leads by 25\%
 \end{itemize}
 
-By reclaiming 7.5 hours each week, Sarah was able to take on two additional clients without hiring new staff.
+By reclaiming 7.5 hours each week, Sarah was able to take on two additional clients without hiring help.
 
+\section{Conclusion}
 
-\section{Next Steps and Community Support}
+This email classification automation is just the tip of the iceberg. As you become more comfortable with n8n and other automation tools, you'll find countless opportunities to streamline your consulting practice. In the next chapter, we'll explore more advanced automation techniques and how to integrate them into your core services.
 
-Ready to implement this automation or explore more advanced use cases? Join our vibrant community of IT consultants and automation enthusiasts on Discord:
+\textbf{Action Items:}
+\begin{enumerate}
+    \item Set up the email classification workflow we've created
+    \item Run the workflow for a week and measure the time saved
+    \item Identify two other repetitive tasks in your practice that could benefit from automation
+\end{enumerate}
 
-JOIN NOW: \href{https://discord.gg/P6txNctp}{Business Automators Discord Server}
+Remember, automation is a journey, not a destination. Start with this email classification workflow, then explore how you can automate other aspects of your consulting practice.
 
-In our community, you can:
-\begin{itemize}
-    \item Get help troubleshooting your automations
-    \item Share your own automation success stories
-    \item Network with other forward-thinking IT consultants
-    \item Get direct access to me, Dele Tosh, for personalized advice
-\end{itemize}
-
-Remember, automation is a journey, not a destination. Start with this email classification workflow, then explore how you can automate other aspects of your consulting practice. In the next chapter, we'll dive deeper into the no-code tools every IT consultant should master.
+% TODO @qr: QR code linking to additional n8n tutorials and resources
